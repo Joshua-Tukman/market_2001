@@ -17,9 +17,7 @@ class Market
   def vendors_that_sell(item)
     purveyor = []
     @vendors.each do |vendor|
-      if vendor.inventory.include?(item)
-        purveyor << vendor
-      end
+      purveyor << vendor if vendor.inventory.include?(item)
     end
     purveyor
   end

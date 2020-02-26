@@ -47,4 +47,12 @@ class VendorTest < Minitest::Test
     assert_equal expected, @vendor.inventory
   end
 
+  def test_it_can_calculate_potential_revenue
+    @vendor.stock(@item1, 30)
+    @vendor.stock(@item1, 25)
+    @vendor.stock(@item2, 12)
+
+    assert_equal 47.25, @vendor.potential_revenue
+  end
+
 end
