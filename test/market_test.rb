@@ -46,6 +46,20 @@ class MarketTest < Minitest::Test
     assert_equal expected, @market.vendor_names
   end
 
+  def test_market_can_tell_vendor_that_sells_item
+    @market.add_vendor(@vendor1)
+    @market.add_vendor(@vendor2)
+    @market.add_vendor(@vendor3)
+
+    @vendor1.stock(@item1, 35)
+    @vendor1.stock(@item2, 7)
+    @vendor2.stock(@item4, 50)
+    @vendor2.stock(@item3, 25)
+    @vendor3.stock(@item1, 65)
+
+    assert_equal [@vendor1, @vendor3], @market.vendors_that_sell(@item1)
+  end
+
 end
 
 
